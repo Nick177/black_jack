@@ -10,4 +10,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
+
+    void computerTurn() {
+        //
+        // if(computerHand <= threshold) {
+        //     Card card = deck.getTopCard();
+        //     if(isAce) {handleAce()}
+        //     computerHand += card.getValue();
+        //     addCardToScreen();
+
+    }
+
 }
