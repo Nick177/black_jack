@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
         //     if(isCompWon()) {
         //         finishGame();
         //     }
-        //
-        int id = getResources().getIdentifier("01c", "drawable", "com.example.nick.black_jack");
+        //      int id = getResources().getIdentifier("01c", "drawable", "com.example.nick.black_jack");
+
     }
 }
