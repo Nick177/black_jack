@@ -48,17 +48,31 @@ public class MainActivity extends AppCompatActivity {
     public void hitT(View view) {
         if (deck.getDeckSize() == 0) {
 
-        } else {
+        }
+        else {
             ImageView cardImage = (ImageView) findViewById(R.id.card_slot1);
             Card cardToDisplay = deck.getTopCard();
             cardImage.setImageResource(cardToDisplay.getImageID());
             TextView playerScore = (TextView) findViewById(R.id.p_score);
 
+            if (cardToDisplay.getValue() == 1) {
+                cardToDisplay.setValue(pickValOfAce());
+            }
+
             player_score += cardToDisplay.getValue();
             playerScore.setText(String.valueOf(player_score));
 
-            //computerTurn();
-            //pickValOfAce();
+            if (player_score == 21) {
+                playerWon = true;
+                gameOver();
+            }
+            else if (player_score > 21) {
+                playerWon = false;
+                gameOver();
+            }
+            else {
+                computerTurn();
+            }
         }
 
     }
@@ -66,17 +80,31 @@ public class MainActivity extends AppCompatActivity {
     public void hitB(View view) {
         if (deck.getDeckSize() == 0) {
 
-        } else {
+        }
+        else {
             ImageView cardImage = (ImageView) findViewById(R.id.card_slot1);
             Card cardToDisplay = deck.getBottomCard();
             cardImage.setImageResource(cardToDisplay.getImageID());
             TextView playerScore = (TextView) findViewById(R.id.p_score);
 
+            if (cardToDisplay.getValue() == 1) {
+                cardToDisplay.setValue(pickValOfAce());
+            }
+
             player_score += cardToDisplay.getValue();
             playerScore.setText(String.valueOf(player_score));
 
-            computerTurn();
-
+            if (player_score == 21) {
+                playerWon = true;
+                gameOver();
+            }
+            else if (player_score > 21) {
+                playerWon = false;
+                gameOver();
+            }
+            else {
+                computerTurn();
+            }
         }
 
     }
