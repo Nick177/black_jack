@@ -95,8 +95,8 @@ public class Deck {
         Card card;
         while(!cards.isEmpty()) {
             card = cards.removeFirst();
-            value = rand.nextInt(51);
-            while (temp[value].getValue() > 0) {
+            value = rand.nextInt(52);
+            while (temp[value] != null) {
                 value = rand.nextInt(51);
             }
             temp[value] = card;

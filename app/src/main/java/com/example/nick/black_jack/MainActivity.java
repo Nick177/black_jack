@@ -65,7 +65,10 @@ public class MainActivity extends AppCompatActivity {
             ImageView cardImage = (ImageView) findViewById(R.id.card_slot1);
             Card cardToDisplay = deck.getTopCard();
             cardImage.setImageResource(cardToDisplay.getImageID());
+            TextView playerScore = (TextView) findViewById(R.id.p_score);
 
+            player_score += cardToDisplay.getValue();
+            playerScore.setText(String.valueOf(player_score));
         }
 
     }
@@ -80,6 +83,11 @@ public class MainActivity extends AppCompatActivity {
             ImageView cardImage = (ImageView) findViewById(R.id.card_slot1);
             Card cardToDisplay = deck.getBottomCard();
             cardImage.setImageResource(cardToDisplay.getImageID());
+            TextView playerScore = (TextView) findViewById(R.id.p_score);
+
+            player_score += cardToDisplay.getValue();
+            playerScore.setText(String.valueOf(player_score));
+
         }
 
     }
