@@ -8,21 +8,42 @@ import java.util.LinkedList;
  */
 
 public class Deck {
-    private Deque<Integer> cards;
+    private Deque<Card> cards;
     private int size;
     private int initId;
 
 
     public Deck(int initId) {
-        this.size = size;
         this.initId = initId;
         int imgId = initId;
 
-        cards = new LinkedList<Integer>();
+        cards = new LinkedList<Card>();
 
         for(int ix = 1; ix <= 13; ix++) {
             for(int jx = 0; jx < 4; jx++) {
-               // Card card = new Card(ix, imgId);
+                int value = ix;
+                if(value > 10)
+                    value = 10;
+                Card card = new Card(value, imgId);
+                cards.addFirst(card);
+                imgId++;
+            }
+        }
+    }
+
+    public void reset() {
+        int imgId = initId;
+
+        cards.clear();
+
+        for(int ix = 1; ix <= 13; ix++) {
+            for(int jx = 0; jx < 4; jx++) {
+                int value = ix;
+                if(value > 10)
+                    value = 10;
+                Card card = new Card(value, imgId);
+                cards.addFirst(card);
+                imgId++;
             }
         }
     }
