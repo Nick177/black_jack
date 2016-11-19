@@ -38,26 +38,6 @@
         android:text="Player Score" />
 
     <Button
-        android:id="@+id/hit"
-        android:text="Hit Top"
-        android:onClick="hitT"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/hold"
-        android:layout_alignBottom="@+id/hold"
-        android:layout_centerHorizontal="true" />
-
-    <Button
-        android:id="@+id/hit_bottom"
-        android:onClick="hitB"
-        android:text="Hit Bottom"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/hit"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-
-    <Button
         android:id="@+id/hold"
         android:onClick="hold"
         android:text="Hold"
@@ -81,6 +61,38 @@
         android:layout_marginEnd="32dp" />
 
 
+    <ImageView
+        android:id="@+id/card_slot1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/a01c"
+        android:layout_marginTop="16dp"
+        android:layout_below="@+id/p_score"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
+    <Button
+        android:id="@+id/hit_bottom"
+        android:onClick="hitB"
+        android:text="Hit Bottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/hit"
+        android:layout_alignBottom="@+id/hit"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:id="@+id/hit"
+        android:text="Hit Top"
+        android:onClick="hitT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/hold"
+        android:layout_alignBottom="@+id/hold"
+        android:layout_toRightOf="@+id/hold"
+        android:layout_toEndOf="@+id/hold"
+        android:layout_marginLeft="32dp"
+        android:layout_marginStart="32dp" />
 
 </RelativeLayout>
