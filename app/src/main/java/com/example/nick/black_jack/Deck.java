@@ -2,6 +2,7 @@ package com.example.nick.black_jack;
 
 import java.util.Deque;
 import java.util.LinkedList;
+import java.util.Random;
 
 /**
  * Created by Kristine on 11/19/16.
@@ -11,7 +12,6 @@ public class Deck {
     private Deque<Card> cards;
     private int size;
     private int initId;
-
 
     public Deck(int initId) {
         this.initId = initId;
@@ -45,6 +45,47 @@ public class Deck {
                 cards.addFirst(card);
                 imgId++;
             }
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    public void shuffle() {
+        Random rand = new Random();
+        int value;
+        Card[] temp = new Card[52];
+        Card card;
+        while(!cards.isEmpty()) {
+            card = cards.removeFirst();
+            value = rand.nextInt(51);
+            while (temp[value].getValue() > 0) {
+                value = rand.nextInt(51);
+            }
+            temp[value] = card;
+        }
+        for (int i = 0; i < 52; i++) {
+            cards.addFirst(temp[i]);
         }
     }
 }
