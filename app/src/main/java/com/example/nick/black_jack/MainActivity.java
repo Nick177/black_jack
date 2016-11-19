@@ -13,11 +13,15 @@ public class MainActivity extends AppCompatActivity {
 
     void computerTurn() {
         //
-        // if(computerHand <= threshold) {
+        // if(computerHand <= THRESHOLD) {
         //     Card card = deck.getTopCard();
-        //     if(isAce) {handleAce()}
+        //     if(isAce) {handleAce(card)}
         //     computerHand += card.getValue();
         //     addCardToScreen();
-
+        //     if(isCompWon()) {
+        //         finishGame();
+        //     }
+        //
+        int id = getResources().getIdentifier("01c", "drawable", "com.example.nick.black_jack");
     }
 }
