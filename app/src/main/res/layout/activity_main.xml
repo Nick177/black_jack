@@ -11,7 +11,88 @@
     tools:context="com.example.nick.black_jack.MainActivity">
 
     <TextView
+        android:id="@+id/computer_score"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:text="Computer Score "
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:id="@+id/cp_score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:layout_below="@+id/computer_score"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="47dp"
+        android:layout_marginEnd="47dp"
+        android:layout_marginTop="14dp" />
+
+    <TextView
+        android:id="@+id/player_score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Player Score" />
+
+    <Button
+        android:id="@+id/hold"
+        android:onClick="hold"
+        android:text="Hold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="47dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:id="@+id/p_score"
+        android:text="0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/cp_score"
+        android:layout_alignBottom="@+id/cp_score"
+        android:layout_alignRight="@+id/player_score"
+        android:layout_alignEnd="@+id/player_score"
+        android:layout_marginRight="32dp"
+        android:layout_marginEnd="32dp" />
+
+
+    <ImageView
+        android:id="@+id/card_slot1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/a01c"
+        android:layout_marginTop="16dp"
+        android:layout_below="@+id/p_score"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:id="@+id/hit_bottom"
+        android:onClick="hitB"
+        android:text="Hit Bottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/hit"
+        android:layout_alignBottom="@+id/hit"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:id="@+id/hit"
+        android:text="Hit Top"
+        android:onClick="hitT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/hold"
+        android:layout_alignBottom="@+id/hold"
+        android:layout_toRightOf="@+id/hold"
+        android:layout_toEndOf="@+id/hold"
+        android:layout_marginLeft="32dp"
+        android:layout_marginStart="32dp" />
+
 </RelativeLayout>
