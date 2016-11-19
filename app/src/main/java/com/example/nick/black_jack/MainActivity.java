@@ -10,12 +10,12 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
     private Deck deck;
-    private int computerHand;
-    private int playerHand;
+    private int computerHand= 0;
     private static final int THRESHOLD = 17;
     private static final String ALERT_ACE_TITLE = "ACE";
     private static final String ALERT_ACE_MSG = "You got an ACE! Choose the value 1 or 11";
@@ -45,11 +45,16 @@ public class MainActivity extends AppCompatActivity {
 
     public void hold(View view) {
         isHold = true;
-        while(computerTurn()) {
+//        while(computerTurn() && computerHand <= 21) {
+//        }
+        computerTurn();
+        //Log.v("**************", ""+pla)
+
+        if(computerTurn())
+        {
+
         }
-
-
-        if(playerHand < 21 && computerHand > playerHand) {
+        else if(player_score < 21 && computerHand > player_score) {
             playerWon = false;
             gameOver();
         }
@@ -124,6 +129,9 @@ public class MainActivity extends AppCompatActivity {
 
     void gameOver() {
         String msg;
+        TextView cpScore = (TextView) findViewById(R.id.cp_score);
+        cpScore.setText(String.valueOf(computerHand));
+
         if (playerWon) {
             msg = PLAYER_WON;
         } else {
@@ -138,7 +146,10 @@ public class MainActivity extends AppCompatActivity {
                 .create();
         dialog.show();
 
+        Toast.makeText(this, "CPU Score: "+computerHand, Toast.LENGTH_LONG).show();
         reset();
+        cpScore.setText(String.valueOf(computerHand));
+
 
     }
 
@@ -147,7 +158,6 @@ public class MainActivity extends AppCompatActivity {
         deck.reset();
         deck.shuffle();
 
-        playerHand = 0;
         computerHand = 0;
         player_score = 0;
         computer_score = 0;
@@ -161,27 +171,26 @@ public class MainActivity extends AppCompatActivity {
         if (computerHand <= THRESHOLD) {
             Card card = deck.getTopCard();
             int cardVal = card.getValue();
-
+            computerHand+= cardVal;
             if (cardVal != 1) {
 
-                if (computerHand + cardVal > 21) {
+                if (computerHand > 21) {
                     playerWon = true;
                     gameOver();
-                } else if (computerHand + cardVal < 21) {
-                    computerHand += cardVal;
+                } else if (computerHand < 21) {
                     return true;
                 } else {
                     playerWon = false;
                     gameOver();
                 }
             } else {
-                cardVal = (computerHand + 11 > 21) ? 1 : 11;
-
-                if (computerHand + cardVal > 21) {
+                computerHand-=cardVal;
+                cardVal = (computerHand > 21) ? 1 : 11;
+                    computerHand+= cardVal;
+                if (computerHand > 21) {
                     playerWon = true;
                     gameOver();
-                } else if (computerHand + cardVal < 21) {
-                    computerHand += cardVal;
+                } else if (computerHand < 21) {
                     return true;
                 } else {
                     playerWon = false;
