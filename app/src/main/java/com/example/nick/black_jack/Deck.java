@@ -47,4 +47,46 @@ public class Deck {
             }
         }
     }
+
+    public Card getTopCard() {
+        if(!cards.isEmpty()) {
+            return cards.removeFirst();
+        }
+        return null;
+    }
+    public Card getBottonCard() {
+        if(!cards.isEmpty()) {
+            return cards.removeLast();
+        }
+        return null;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
