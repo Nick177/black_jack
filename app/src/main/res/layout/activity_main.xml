@@ -61,16 +61,6 @@
         android:layout_marginEnd="32dp" />
 
 
-    <ImageView
-        android:id="@+id/card_slot1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/a01c"
-        android:layout_marginTop="16dp"
-        android:layout_below="@+id/p_score"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
     <Button
         android:id="@+id/hit_bottom"
         android:onClick="hitB"
@@ -94,5 +84,29 @@
         android:layout_toEndOf="@+id/hold"
         android:layout_marginLeft="32dp"
         android:layout_marginStart="32dp" />
+
+    <ImageView
+        android:id="@+id/card_slot1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/a01c"
+        android:layout_below="@+id/p_score"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="19dp"
+        android:layout_toStartOf="@+id/hit"
+        android:layout_alignRight="@+id/hit"
+        android:layout_alignEnd="@+id/hit" />
+
+    <ImageView
+        android:id="@+id/card_slot2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/a01c"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignLeft="@+id/computer_score"
+        android:layout_alignStart="@+id/computer_score" />
 
 </RelativeLayout>

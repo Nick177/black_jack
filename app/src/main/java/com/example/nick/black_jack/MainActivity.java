@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,6 +19,8 @@ public class MainActivity extends AppCompatActivity {
     private static final String ALERT_ACE_TITLE = "ACE";
     private static final String ALERT_ACE_MSG = "You got an ACE! Choose the value 1 or 11";
     private int numChoice;
+    private int player_score = 0;
+    private int computer_score = 0;
 
 
     @Override
@@ -25,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        int id = getResources().getIdentifier("01c", "drawable", "com.example.nick.black_jack");
+        int id = getResources().getIdentifier("a01c", "drawable", "com.example.nick.black_jack");
         deck = new Deck(id);
     }
 
@@ -53,10 +56,31 @@ public class MainActivity extends AppCompatActivity {
     }
     public void hitT(View view)
     {
+        if(deck.getDeckSize() == 0)
+        {
+
+        }
+        else
+        {
+            ImageView cardImage = (ImageView) findViewById(R.id.card_slot1);
+            Card cardToDisplay = deck.getTopCard();
+            cardImage.setImageResource(cardToDisplay.getImageID());
+
+        }
 
     }
     public void hitB(View view)
     {
+        if(deck.getDeckSize() == 0)
+        {
+
+        }
+        else
+        {
+            ImageView cardImage = (ImageView) findViewById(R.id.card_slot1);
+            Card cardToDisplay = deck.getBottomCard();
+            cardImage.setImageResource(cardToDisplay.getImageID());
+        }
 
     }
 

@@ -49,6 +49,20 @@ public class Deck {
         }
     }
 
+    public Card getTopCard() {
+        if(!cards.isEmpty()) {
+            return cards.removeFirst();
+        }
+        return null;
+    }
+    public Card getBottomCard() {
+        if(!cards.isEmpty()) {
+            return cards.removeLast();
+        }
+    return null;
+    }
+
+
 
 
 
@@ -91,4 +105,10 @@ public class Deck {
             cards.addFirst(temp[i]);
         }
     }
+    public int getDeckSize(){
+        return cards.size();
+    }
+
+
+
 }
