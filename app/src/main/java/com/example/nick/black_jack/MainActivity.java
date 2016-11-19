@@ -6,9 +6,9 @@ import android.content.DialogInterface;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,10 +18,9 @@ public class MainActivity extends AppCompatActivity {
     private static final int THRESHOLD = 17;
     private static final String ALERT_ACE_TITLE = "ACE";
     private static final String ALERT_ACE_MSG = "You got an ACE! Choose the value 1 or 11";
-    private static final String PLAYER_WON = "Your the winner!!!";
-    private static final String COMP_WON = "Sorry, you lost";
     private int numChoice;
-    private boolean playerWon;
+    private int player_score = 0;
+    private int computer_score = 0;
 
 
     @Override
@@ -29,34 +28,22 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //int id = getResources().getIdentifier("01c", "drawable", "com.example.nick.black_jack");
-        //deck = new Deck(id);
-        pickValOfAce();
-        playerWon = true;
+        int id = getResources().getIdentifier("a01c", "drawable", "com.example.nick.black_jack");
+        deck = new Deck(id);
     }
 
     void computerTurn() {
 
          if(computerHand <= THRESHOLD) {
              Card card = deck.getTopCard();
-             int cardVal = card.getValue();
 
-             if(cardVal != 1) {
+             if(card.getValue() != 1) {
                  computerHand += card.getValue();
              }
              else {
-                 if(computerHand + cardVal > 21) {
-                     playerWon = true;
-                     gameOver();
-                 }
-                 else if(computerHand + cardVal < 21) {
-                     computerHand += cardVal;
-                 }
-                 else {
-                     playerWon = false;
-                     gameOver();
-                 }
+                 pickValOfAce();
              }
+
 
          }
 
@@ -66,17 +53,35 @@ public class MainActivity extends AppCompatActivity {
     public void hold(View view)
     {
 
-        computerTurn();
     }
     public void hitT(View view)
     {
+        if(deck.getDeckSize() == 0)
+        {
 
-        computerTurn();
+        }
+        else
+        {
+            ImageView cardImage = (ImageView) findViewById(R.id.card_slot1);
+            Card cardToDisplay = deck.getTopCard();
+            cardImage.setImageResource(cardToDisplay.getImageID());
+
+        }
+
     }
     public void hitB(View view)
     {
+        if(deck.getDeckSize() == 0)
+        {
 
-        computerTurn();
+        }
+        else
+        {
+            ImageView cardImage = (ImageView) findViewById(R.id.card_slot1);
+            Card cardToDisplay = deck.getBottomCard();
+            cardImage.setImageResource(cardToDisplay.getImageID());
+        }
+
     }
 
     private int pickValOfAce() {
@@ -99,32 +104,6 @@ public class MainActivity extends AppCompatActivity {
                 .create();
         dialog.show();
 
-        while(numChoice == 0) {
-
-        }
-
-        Log.v("***************", "" + numChoice);
-
         return numChoice;
-    }
-
-    void gameOver() {
-        String msg;
-        if(playerWon) {
-            msg = PLAYER_WON;
-        }
-        else {
-            msg = COMP_WON;
-        }
-
-        AlertDialog dialog = new AlertDialog.Builder(this)
-                .setTitle("GAME OVER")
-                .setMessage(msg)
-                .setPositiveButton("OK", null)
-                .setNegativeButton("CANCEL", null)
-                .create();
-        dialog.show();
-
-        deck.reset();
     }
 }
