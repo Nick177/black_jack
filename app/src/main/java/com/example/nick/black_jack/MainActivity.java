@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String PLAYER_WON = "You are the winner!!!";
     private static final String COMP_WON = "Sorry, you lost";
     private boolean playerWon;
+    private boolean isHold;
 
 
 
@@ -33,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         playerWon = true;
+        isHold = false;
 
         int id = getResources().getIdentifier("a01c", "drawable", "com.example.nick.black_jack");
         deck = new Deck(id);
@@ -42,12 +44,25 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void hold(View view) {
+        isHold = true;
+        while(computerTurn()) {
+        }
+
+
+        if(playerHand < 21 && computerHand > playerHand) {
+            playerWon = false;
+            gameOver();
+        }
+        else {
+            playerWon = true;
+            gameOver();
+        }
 
     }
 
     public void hitT(View view) {
         if (deck.getDeckSize() == 0) {
-
+            gameOver();
         } else {
             ImageView cardImage = (ImageView) findViewById(R.id.card_slot1);
             Card cardToDisplay = deck.getTopCard();
@@ -65,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void hitB(View view) {
         if (deck.getDeckSize() == 0) {
-
+            gameOver();
         } else {
             ImageView cardImage = (ImageView) findViewById(R.id.card_slot1);
             Card cardToDisplay = deck.getBottomCard();
@@ -97,10 +112,25 @@ public class MainActivity extends AppCompatActivity {
                 .create();
         dialog.show();
 
-        deck.reset();
+        reset();
+
     }
 
-    void computerTurn() {
+    private void reset() {
+
+        deck.reset();
+        deck.shuffle();
+
+        playerHand = 0;
+        computerHand = 0;
+        player_score = 0;
+        computer_score = 0;
+        isHold = false;
+
+    }
+
+    boolean computerTurn() {
+
 
         if (computerHand <= THRESHOLD) {
             Card card = deck.getTopCard();
@@ -113,6 +143,7 @@ public class MainActivity extends AppCompatActivity {
                     gameOver();
                 } else if (computerHand + cardVal < 21) {
                     computerHand += cardVal;
+                    return true;
                 } else {
                     playerWon = false;
                     gameOver();
@@ -125,6 +156,7 @@ public class MainActivity extends AppCompatActivity {
                     gameOver();
                 } else if (computerHand + cardVal < 21) {
                     computerHand += cardVal;
+                    return true;
                 } else {
                     playerWon = false;
                     gameOver();
@@ -133,6 +165,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
+        return false;
     }
     private int pickValOfAce() {
 
